@@ -1,4 +1,4 @@
-<!--Vanessa Gutierrez 03/06/2021-->
+<!--Vanessa Gutierrez 03/12/2021-->
 <template>
   <section class="max-w-2xl mx-auto rounded bg-neutral text-coolGray-100">
     <div class="container flex items-center justify-center text-center">
@@ -9,12 +9,13 @@
         <label
           for="username"
           class="self-start text-xs font-semibold text-content-200"
-          >Username or Email</label
+          >Email</label
         >
         <input
           id="username"
           type="text"
           class="flex items-center h-12 px-4 mt-2 rounded focus:outline-none focus:ring-2 text-coolGray-900"
+          v-model="email"
         />
         <label
           for="password"
@@ -25,6 +26,7 @@
           id="password"
           type="password"
           class="flex items-center h-12 px-4 mt-2 rounded focus:outline-none focus:ring-2 text-coolGray-900"
+          v-model="password"
         />
         <button @click="login" class="btn btn-primary mt-4">Login</button>
       </form>
@@ -33,11 +35,18 @@
 </template>
 
 <script setup>
+import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { isAuthenticated } from '../helpers/useAuth'
+import { signIn } from '../helpers/useAuth'
 const router = useRouter()
-const login = () => {
-  isAuthenticated.value = true
-  router.push('/')
+const login = async () => {
+  try {
+    await signIn(email.value, password.value)
+    router.push('/')
+  } catch (error) {
+    console.log(error)
+  }
 }
+const email = ref('')
+const password = ref('')
 </script>
