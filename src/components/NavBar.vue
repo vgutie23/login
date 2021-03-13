@@ -1,4 +1,4 @@
-<!--Vanessa Gutierrez 03/06/2021-->
+<!--Vanessa Gutierrez 03/12/2021-->
 <template>
   <div class="navbar mb-2 shadow-lg bg-neutral text-neutral-content">
     <div class="flex-1 px-2 mx-2">
@@ -14,7 +14,7 @@
           to="/login"
           class="btn btn-ghost btn-sm rounded-btn"
         >
-          Login
+          Login/Register
         </router-link>
         <div v-else>
           <router-link to="/secret" class="btn btn-ghost btn-sm rounded-btn">

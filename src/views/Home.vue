@@ -2,9 +2,13 @@
 <template>
   <div class="mt-8">
     <p class="text-3xl mx-auto text-center m-16 tracking-wider font-thin">
-      Welcome {{ user?.email || 'New User' }}
+      Hello {{ user?.email || 'New User' }}!
     </p>
-    <h1 class="text-2xl font-bold pt-5 text-center text-cyan-800">Home Page</h1>
+    <img
+      class="h-40 mx-auto mt-12"
+      src="../assets/welcomesign.svg"
+      alt="Welcome Sign Image"
+    />
   </div>
 </template>
 

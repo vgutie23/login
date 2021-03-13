@@ -1,6 +1,6 @@
 <!--Vanessa Gutierrez 03/12/2021-->
 <template>
-  <section class="max-w-2xl mx-auto rounded bg-neutral text-coolGray-100">
+  <section class="max-w-2xl mx-auto rounded bg-neutral text-coolGray-100 mt-16">
     <div class="container flex items-center justify-center text-center">
       <form
         @submit.prevent
@@ -29,6 +29,7 @@
           v-model="password"
         />
         <button @click="login" class="btn btn-primary mt-4">Login</button>
+        <button @click="register" class="btn btn-accent mt-4">Register</button>
       </form>
     </div>
   </section>
@@ -37,11 +38,19 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { signIn } from '../helpers/useAuth'
+import { signIn, signUp } from '../helpers/useAuth'
 const router = useRouter()
 const login = async () => {
   try {
     await signIn(email.value, password.value)
+    router.push('/')
+  } catch (error) {
+    console.log(error)
+  }
+}
+const register = async () => {
+  try {
+    await signUp(email.value, password.value)
     router.push('/')
   } catch (error) {
     console.log(error)
